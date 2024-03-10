@@ -1,14 +1,23 @@
 ---
-title: "Calculating contributions to inflation"
-date: 2023-10-21T18:55:20+09:30
+title: Calculating contributions to inflation
+date: 2023-10-21
+publishDate: 2023-10-21
+lastmod: 2024-03-10
 draft: false
 math: true
-description: "A simple method for calculating the percentage point contributions of expenditure classes to year-ended and year-average change in the consumer price index (and other chain-linked indices)."
+description: Simple method for calculating the percentage point contributions of expenditure classes to year-ended and year-average change in the consumer price index.
+keywords:
+  - chain-linked
+  - components
+  - contributions
+  - contributors
+  - CPI
+  - inflation
 ---
 
 This is a writeup on calculating percentage point contribution of an expenditure class to year-ended and year-average change in the Australian [consumer price index](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/latest-release) (CPI) as published by the [Australian Bureau of Statistics](https://www.abs.gov.au/) (ABS).
 
-While this focuses on CPI specifically, the same method can be applied to any other chain linked index that can be broken down to components where it is possible to calculate the percentage point contributions of those components for the base time unit (e.g. quarterly contributions for a quarterly series). The formulas can be modified slightly to work with monthly series by replacing 3's with 11's and 4's with 12's where appropriate. With a bit of imagination you should be able to modify them to calculate contributions to change over longer or shorter time periods too.
+While this focuses on CPI specifically, the same method can be applied to any other chain-linked index that can be broken down to components where it is possible to calculate the percentage point contributions of those components for the base time unit (e.g. quarterly contributions for a quarterly series). The formulas can be modified slightly to work with monthly series by replacing 3's with 11's and 4's with 12's where appropriate. With a bit of imagination you should be able to modify them to calculate contributions to change over longer or shorter time periods too.
 
 You can find spreadsheets in this [GitHub repo](https://github.com/awhitesmith/inflation-contributions) for calculating the percentage point contributions in quarterly, year-ended and year-average terms for the capital cities and national CPI.
 
@@ -69,6 +78,11 @@ You can find spreadsheets in this [GitHub repo](https://github.com/awhitesmith/i
             },
             ticks: {
               min: 0
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'percentage points',
+              padding: top
             }
           }]
         },
@@ -224,7 +238,7 @@ However this formula has a few undesirable properties. For example, consider the
 
 ### A solution
 
-The CPI is a chain linked series. This means it is actually several series that have been stitched together ("chain linked"). The underlying series overlap by one period to accommodate this, like in the below table:
+The CPI is a chain-linked series. This means it is actually several series that have been stitched together ("chain linked"). The underlying series overlap by one period to accommodate this, like in the below table:
 
 <table>
 <thead>

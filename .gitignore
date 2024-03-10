@@ -1,5 +1,6 @@
 /public/
 /resources/_gen/
+/.vscode/
 
 hugo.exe
 hugo.linux
