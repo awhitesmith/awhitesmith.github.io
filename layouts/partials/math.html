@@ -1,0 +1,27 @@
+{{ $script := .Site.Data.webpack_assets.app }}
+{{ with $script.js }}
+<script src="{{ relURL (printf " %s%s" "dist/" .) }}"></script>
+{{ end }}
+
+<script type="text/x-mathjax-config">
+  // Scale down the latex a bit to match the normal text
+  MathJax.Hub.Config({
+    CommonHTML: {
+      scale: 90
+    }
+  });
+</script>
+<script async 
+   src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'>
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+     tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+     })
+</script>
+<style>
+  .MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
