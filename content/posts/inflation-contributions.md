@@ -276,7 +276,7 @@ $$
 Using \\(\text{CPI}\_t=\text{CPI}\_0+\sum\_{i=1}^t\Delta\text{CPI}\_i\\), we can substitute in (10) and swap around the sums to get the following expression for \\(\text{CPI}\_t\\):
 
 $$
-\text{CPI}\_t=\text{CPI}\_0+\sum\limits\_{j}\left(\sum\_{i=1}^t W\_t^j\cdot \text{CPI}\_{\text{RP}\_t}\cdot \frac{\text{EC}^j\_i-\text{EC}^j\_{i-1}}{\text{EC}^j\_{\text{RP}\_i}}\right)\tag{11}
+\text{CPI}\_t=\text{CPI}\_0+\sum\limits\_{j}\left(\sum\_{i=1}^t W\_i^j\cdot \text{CPI}\_{\text{RP}\_i}\cdot \frac{\text{EC}^j\_i-\text{EC}^j\_{i-1}}{\text{EC}^j\_{\text{RP}\_i}}\right)\tag{11}
 $$
 
 And we can then note that we've decomposed CPI into a sum of time series, which can be plugged into (4), (5) and (6) to give (1), (2) and (3) respectively.
