@@ -1,3 +1,11 @@
 {{ if or .Params.math .Site.Params.math }}
 {{ partial "math.html" . }}
 {{ end }}
+
+{{ if or .Params.leaflet .Site.Params.leaflet }}
+{{ partial "leaflet.html" . }}
+{{ end }}
+
+{{ if or .Params.jquery .Site.Params.jquery }}
+{{ partial "jquery.html" . }}
+{{ end }}
