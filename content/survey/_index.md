@@ -32,10 +32,11 @@ showToc: false
 <div class="post-content" id="q3-notif"></div>
 
 <iframe id="q3-map" src="mapembed.html" style="width:100%;aspect-ratio:1/1;max-height:400px;border:solid;border-width:1px;"></iframe>
+<div id="q3-selection" style="display:none;border:solid;border-width:1px;width:100%;padding-left:4px;padding-right:4px;"></div>
 
 #### Q4. (Optional) What is your email?
 
-> If you share your email address we will send you an update when the results of the survey have been considered.
+> If you share your email address we will send you an update at a later date when the survey has finished.
 
 <input class="post-content" type="email" id="q4-input" name="q4-input" placeholder="Enter your email address..." style="border:solid;border-width:1px;width:100%;padding-left:4px;padding-right:4px;"><br><br>
 
@@ -48,13 +49,25 @@ showToc: false
 </p>
 
 <script>
+    const q3Iframe = $("#q3-map").get(0); // get DOM of iframe for Q3
+    q3Iframe.contentWindow.selectLatLngCallback = updateSelectedLatlng;
+
     function getValue(inputId) {
         return $("#" + inputId).val();
     }
 
-    function getSelectedLatlng(iframeId) {
-        var iframe = $("#" + iframeId).get(0); // get DOM of iframe
-        return iframe.contentWindow.selectedLatlng;
+    function getSelectedLatlng() {
+        return q3Iframe.contentWindow.selectedLatlng;
+    }
+
+    function updateSelectedLatlng() {
+        latlng = getSelectedLatlng().wrap();
+        if (latlng !== undefined) {
+            let latRnd = parseFloat(latlng.lat).toFixed(2);
+            let lngRnd = parseFloat(latlng.lng).toFixed(2);
+            $("#q3-selection").show();
+            $("#q3-selection").html(`Latitude: ${latRnd}, Longitude: ${lngRnd}`);
+        }
     }
 
     $("#submit-button").click(e => {

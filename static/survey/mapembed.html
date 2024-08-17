@@ -34,7 +34,7 @@
         var zoomErrorTextbox = L.Control.extend({
             onAdd: function() {
                 var text = L.DomUtil.create('div');
-                text.innerHTML = "<div style='border:solid 1px; background: white;'><h3 style='margin-top:3px;margin-bottom:3px;text-shadow: 0 0 2px #fff;'>Please zoom in further to select a location.</h3> </div>"
+                text.innerHTML = "<div style='border:solid 1px; background: white;'><h3 style='margin:3px;text-shadow: 0 0 2px #fff;'>Zoom in further to select a location.</h3> </div>"
                 return text;
             },
     
@@ -73,6 +73,10 @@
             marker
                 .setLatLng(e.latlng)
                 .addTo(map);
+
+            if (window.selectLatLngCallback) {
+                window.selectLatLngCallback();
+            }
         }
 
         map.on('click', onClick);
