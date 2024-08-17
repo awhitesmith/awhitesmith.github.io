@@ -30,14 +30,52 @@
 
         var marker = L.marker();
 
-        function onMapClick(e) {
+        var currentZoomErrorTextbox = undefined;
+        var zoomErrorTextbox = L.Control.extend({
+            onAdd: function() {
+                var text = L.DomUtil.create('div');
+                text.innerHTML = "<div style='border:solid 1px; background: white;'><h3 style='margin-top:3px;margin-bottom:3px;text-shadow: 0 0 2px #fff;'>Please zoom in further to select a location.</h3> </div>"
+                return text;
+            },
+    
+        });
+
+        var pendingClick = false;
+        var cancelClick = false;
+
+        function onClick(e) {
+            if (pendingClick) {
+                cancelClick = true; // another click was pending, so it was a double click
+            } else {
+                pendingClick = true;
+                setTimeout(() => {
+                    if (!cancelClick) {
+                        map.fire('singleclick', e); // not cancelled, so it was a single click
+                    }
+                    cancelClick = false;
+                    pendingClick = false;
+                }, 500); // wait 500 milliseconds to test if it was a double click
+            }
+        }
+
+        function onSingleClick(e) {
+            if (currentZoomErrorTextbox !== undefined) {
+                map.removeControl(currentZoomErrorTextbox);
+            }
+            if (map.getZoom() < 10) {
+                var newZoomErrorTextbox = new zoomErrorTextbox({ position: 'topright' }).addTo(map);
+                setTimeout(() => map.removeControl(newZoomErrorTextbox), 7500);
+                currentZoomErrorTextbox = newZoomErrorTextbox;
+                return;
+            }
             window.selectedLatlng = e.latlng;
             marker
                 .setLatLng(e.latlng)
                 .addTo(map);
         }
 
-        map.on('click', onMapClick);
+        map.on('click', onClick);
+        map.on('singleclick', onSingleClick);
     </script>
 </body>
 
