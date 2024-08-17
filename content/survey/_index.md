@@ -111,7 +111,7 @@ showToc: false
         }
 
         $.ajax({
-            url: 'http://survey.awhitesmith.com/submit',
+            url: 'https://survey.awhitesmith.com/submit',
             type: 'POST',
             contentType: "application/json",
             data=JSON.stringify(data),
