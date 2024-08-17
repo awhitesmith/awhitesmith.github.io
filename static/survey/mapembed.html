@@ -42,6 +42,7 @@
 
         var pendingClick = false;
         var cancelClick = false;
+        const dblClickDelay = window.matchMedia("(any-hover: none)").matches ? 300 : 500; // 300 ms for touch devices, 500 for desktops
 
         function onClick(e) {
             if (pendingClick) {
@@ -54,7 +55,7 @@
                     }
                     cancelClick = false;
                     pendingClick = false;
-                }, 500); // wait 500 milliseconds to test if it was a double click
+                }, dblClickDelay); // delay to test if it was a double click
             }
         }
 
