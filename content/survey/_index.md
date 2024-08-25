@@ -103,6 +103,12 @@ showToc: false
                 backgroundColor: "rgba(255, 0, 0, 0.2)"
             });
             invalid = true;
+        } else if (q2Response < 1900 || q2Response > 2024) {
+            $("#q2-notif").html("<p>The year must be between 1900 and 2024.</p>")
+            $("#q2-notif").css({
+                backgroundColor: "rgba(255, 0, 0, 0.2)"
+            });
+            invalid = true;
         } else {
             $("#q2-notif").html("")
         }
