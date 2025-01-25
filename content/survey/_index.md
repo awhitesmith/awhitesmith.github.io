@@ -5,6 +5,7 @@ jquery: true
 description: We've all played it, but what do you call it?
 layout: single
 showToc: false
+lastmod: 2025-01-25
 ---
 
 #### Q1. What do you call the game depicted in the image below?
@@ -34,11 +35,15 @@ showToc: false
 <iframe id="q3-map" src="mapembed.html" style="width:100%;aspect-ratio:1/1;max-height:400px;border:solid;border-width:1px;"></iframe>
 <div id="q3-selection" style="display:none;border:solid;border-width:1px;width:100%;padding-left:4px;padding-right:4px;"></div>
 
+<!----
 #### Q4. (Optional) What is your email?
 
 > If you share your email address we will send you an update at a later date when the survey has finished.
 
 <input class="post-content" type="email" id="q4-input" name="q4-input" placeholder="Enter your email address..." style="border:solid;border-width:1px;width:100%;padding-left:4px;padding-right:4px;"><br><br>
+-->
+
+#### Submit
 
 <div class="post-content" id="submit-notif"></div>
 
@@ -71,6 +76,7 @@ showToc: false
     }
 
     $("#submit-button").click(e => {
+        $("#submit-button")[0].disabled = true;
         var q1Response = getValue("q1-input");
         var q2Response = getValue("q2-input");
         var q3Response = getSelectedLatlng("q3-map");
@@ -126,6 +132,7 @@ showToc: false
             $("#submit-notif").css({
                 backgroundColor: "rgba(255, 0, 0, 0.2)"
             });
+            $("#submit-button")[0].disabled = false;
             return;
         }
 
@@ -135,12 +142,13 @@ showToc: false
             contentType: "application/json",
             data=JSON.stringify(data),
             success: function(response) {
-                $("#submit-notif").html("<p>Response submitted. Thank you for participating.</p>")
+                $("#submit-notif").html("<p>Response submitted. Thank you for participating.</p> <p>Read the survey results <a href='/posts/name-of-a-game/'>here</a>.</p>")
                 $("#submit-notif").css({
                     backgroundColor: "rgba(0, 255, 0, 0.2)"
                 });
             },
             error: function(response) {
+                $("#submit-button")[0].disabled = false;
                 $("#submit-notif").html("<p>Server returned error. Please try again later.</p>")
                 $("#submit-notif").css({
                     backgroundColor: "rgba(255, 0, 0, 0.2)"
