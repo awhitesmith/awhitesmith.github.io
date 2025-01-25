@@ -109,8 +109,8 @@ lastmod: 2025-01-25
                 backgroundColor: "rgba(255, 0, 0, 0.2)"
             });
             invalid = true;
-        } else if (q2Response < 1900 || q2Response > 2024) {
-            $("#q2-notif").html("<p>The year must be between 1900 and 2024.</p>")
+        } else if (q2Response < 1900 || q2Response > new Date(Date.now()).getFullYear()) {
+            $("#q2-notif").html(`<p>The year must be between 1900 and ${new Date(Date.now()).getFullYear()}.</p>`)
             $("#q2-notif").css({
                 backgroundColor: "rgba(255, 0, 0, 0.2)"
             });
