@@ -1,0 +1,6 @@
+visible: true
+location: 200,200,0
+images: character:character.png
+default: title
+width: 50
+height: 100

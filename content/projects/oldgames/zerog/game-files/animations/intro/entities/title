@@ -1,0 +1,6 @@
+visible: true
+location: 483,309,0
+images: logo:logo.png
+default: logo
+width: 400
+height: 75

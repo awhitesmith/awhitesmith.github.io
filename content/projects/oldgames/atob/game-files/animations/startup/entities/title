@@ -1,0 +1,6 @@
+visible: true
+location: 200,200,0
+images: title:title.png
+default: title
+width: 667
+height: 76

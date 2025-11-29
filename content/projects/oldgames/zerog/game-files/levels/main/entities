@@ -1,0 +1,18 @@
+STAR:Uber Amazing Star:0,0,0:100:100:true:test:uas.png,uas2.png
+
+STAR:Larger Star:5,0,0:200:200:true:test:uas.png,uas2.png
+
+
+COMET:comet001:-10,0,0:50:50:true:0.25:0.25:comet.png:comet001
+
+COMET:comet002:-20,3,90:10:10:true:0.1:1:comet.png:comet002
+
+COMET:comet003:20,3,270:10:10:true:-0.1:0.2:comet.png:comet003
+
+//PIRATE:p1:-10,0,0
+SENTRY:sentry0:-40,0,0:sentry.png
+SENTRY:sentry1:-41,0,0:sentry.png
+SENTRY:sentry2:-42,0,0:sentry.png
+SENTRY:sentry3:-43,1,0:sentry.png
+SENTRY:sentry4:-44,2,0:sentry.png
+
