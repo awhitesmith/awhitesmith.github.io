@@ -6,6 +6,9 @@ showToc: false
 hideMeta: true
 hideDescription: true
 lastmod: 2025-11-28
+cover:
+    image: "/projects/oldgames/images/cover.png"
+    hidden: false
 ---
 
 This page serves as an archive for some of the games I made throughout my school years.
