@@ -1,5 +1,5 @@
 ---
-title: Canary's Dead
+title: Canary's Dead 2
 description: Canary's Dead 2 is an old game I made in 2014.
 layout: single
 showToc: false
